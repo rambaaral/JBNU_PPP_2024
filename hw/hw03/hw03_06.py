@@ -6,4 +6,4 @@ y2=int(input("두 번째 점의 y좌표를 입력해주세요."))
 import math
 le=round(math.sqrt(((x1-x2)**2)+((y1-y2)**2)), 2)
 
-print("두 점 사이의 거리는 {}입니다.".format(le))
+print("두 점 사이의 거리는 {}입니다.[({},{}), ({},{})]".format(le, x1, y1, x2, y2))
