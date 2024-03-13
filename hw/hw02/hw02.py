@@ -1,8 +1,8 @@
 
 cd1 = 30
 cd2 = 0
-fd1 = round((cd1 - 32)*5/9, 2)
-fd2 = round((cd2 - 32)*5/9, 2)
+fd1 = round((cd1*1.8) + 32, 2)
+fd2 = round((cd2*1.8) + 32, 2)
 print("섭씨 {}도는 화씨 {}도 입니다.".format(cd1, fd1))
 print("섭씨 {}도는 화씨 {}도 입니다.".format(cd2, fd2))
 
