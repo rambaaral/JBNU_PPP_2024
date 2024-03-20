@@ -55,6 +55,7 @@ print(total_cal)
 #round는 반올림하면서 숫자를 버리지만 print format은 버리지 않고 잘라서 출력한다.
 sss=math.pi
 print("asdfsd{:7.10f}".format(sss))
+print(f'{sss:.3f}')
 
 
 
