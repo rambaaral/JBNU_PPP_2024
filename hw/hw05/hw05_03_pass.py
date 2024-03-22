@@ -7,9 +7,10 @@ stomach = []
 def auto(fruit):
     fgram[f"{fruit}"]=float(input(f"{fruit} 한개의 무게를 입력해주세요.(g)"))
     eatf[f"{fruit}"]=float(input(f"먹은 {fruit}의 개수를 입력해주세요"))
-    for i in range(int(eatf[f"{fruit}"])):
+    i = 0
+    while i < eatf[f"{fruit}"]:
         stomach.append(f"{fruit}")
-        i = i + 1
+        i += 1
 
 auto("한라봉")
 
