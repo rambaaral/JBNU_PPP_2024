@@ -2,8 +2,8 @@
 
 def sum_n(n):
     if n > 0:
-        res = (n*(n+1))/2
-        print(f"1부터 {n}까지의 합은 {res:.0f}입니다.")
+        res = int((n*(n+1))/2)
+        print(f"1부터 {n}까지의 합은 {res}입니다.")
     else:
         print(f"{n}은(는) 유효하지 않은 숫자입니다.")
 
