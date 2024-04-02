@@ -11,8 +11,8 @@ def average(a):
     return result
 
 def median(a):
-    l = int(len(a)/2)
-    result = a[(l)]
+    length = len(a)//2
+    result = a[(length)]
     return result
 
 def main():
