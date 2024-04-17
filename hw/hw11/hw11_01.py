@@ -1,15 +1,4 @@
 #최장연속강우일수구하기
-def weather(filename, idx):
-    dataset = []
-    with open(filename, encoding="utf-8-sig") as f:
-        lines = f.readlines()
-
-        for line in lines[1:]:
-            tokens = line.split(",")
-            tavg = float(tokens[idx])
-            dataset.append(tavg)
-    return dataset
-
 def long_rain(wlist):
     rain_event = []
 
@@ -22,12 +11,11 @@ def long_rain(wlist):
         else:
             prev_rain_count += 1
     return max(rain_event)
-        
-
 
 def main():
+    import weather
     weather_name = "hw/hw11/weather(146)_2022-2022.csv"
-    rainfall = weather(weather_name, 9)
+    rainfall = weather.weather_float(weather_name, 9)
     print(f"최장연속강우일수는 {long_rain(rainfall)}일 입니다.")
 
 if __name__ == "__main__":

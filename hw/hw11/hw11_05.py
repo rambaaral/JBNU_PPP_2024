@@ -1,27 +1,5 @@
 #21년과 22년 총 강수량은?
 
-def weather(filename, idx):
-    dataset = []
-    with open(filename, encoding="utf-8-sig") as f:
-        lines = f.readlines()
-
-        for line in lines[1:]:
-            tokens = line.split(",")
-            tavg = float(tokens[idx])
-            dataset.append(tavg)
-    return dataset
-
-def weather_int(filename, idx):
-    dataset = []
-    with open(filename, encoding="utf-8-sig") as f:
-        lines = f.readlines()
-
-        for line in lines[1:]:
-            tokens = line.split(",")
-            tavg = int(tokens[idx])
-            dataset.append(tavg)
-    return dataset
-
 def sumifs_year(rainfall, years, condition):
     total = 0
     for i in range(len(rainfall)):
@@ -32,9 +10,10 @@ def sumifs_year(rainfall, years, condition):
     return total
 
 def main():
+    import weather
     weather_name = "hw/hw11/weather(146)_2001-2022.csv"
-    rainfall = weather(weather_name, 9)
-    year = weather_int(weather_name, 0)
+    rainfall = weather.weather_float(weather_name, 9)
+    year = weather.weather_int(weather_name, 0)
     rainfall_2021 = sumifs_year(rainfall, year, [2021])
     rainfall_2022 = sumifs_year(rainfall, year, [2022])
 
