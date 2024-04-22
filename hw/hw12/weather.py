@@ -32,3 +32,6 @@ def dates(filename):
             days = int(tokens[2])
             dataset.append([years, months, days])
     return dataset
+
+def date2str(date):
+    return f"{date[0]}/{date[1]:02d}/{date[2]:02d}"
