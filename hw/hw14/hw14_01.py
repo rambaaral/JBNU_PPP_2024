@@ -34,9 +34,9 @@ def main():
     url = "https://data.kma.go.kr/stcs/grnd/downloadGrndTaList.do?fileType=csv&pgmNo=70&menuNo=432&serviceSe=F00101&stdrMg=99999&startDt=19040101&endDt=20240422&taElement=MIN&taElement=AVG&taElement=MAX&stnGroupSns=&selectType=1&mddlClssCd=SFC01&dataFormCd=F00501&dataTypeCd=standard&startDay=19040101&startYear=1904&endDay=20240422&endYear=2024&startMonth=01&endMonth=12&sesnCd=0&txtStnNm=%EC%A0%84%EC%A3%BC&stnId=146&areaId=&gFontSize="
     filestaion = "hw/hw14/wlist.csv"
     weather.callfile(filestaion,url)
-    tmax = weather.weather_float(filestaion, 4, 16, 2)
-    tmin = weather.weather_float(filestaion, 3, 16, 2)
-    date = weather.weather_str(filestaion, 0, 16, 2)
+    tmax = weather.weather_float(filestaion, 4, 8)
+    tmin = weather.weather_float(filestaion, 3, 8)
+    date = weather.weather_str(filestaion, 0, 8)
     tmax_idx = find_tmax_idx(tmax)
     gapmax_idx = find_gapmax_idx(tmax, tmin)
     gapmax = tmax[gapmax_idx]-tmin[gapmax_idx]
