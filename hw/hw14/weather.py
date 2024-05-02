@@ -1,58 +1,62 @@
-def weather_float(filename, idx, skip=1, step=1):
+def weather_list(filename, idxlen):
     dataset = []
     with open(filename, encoding="utf-8-sig") as f:
-        lines = f.readlines()
 
-        for line in lines[skip::step]:
+        lines = f.readlines()
+        for line in lines:
             tokens = line.strip().split(",")
-            if len(tokens)-1 >= idx:
-                if tokens[idx] != '':
-                    token = float(tokens[idx])
-                else:
-                    token = None
-            dataset.append(token)
+            if len(tokens)-1 >= idxlen:
+                if not '' in tokens:
+                    dataset.append(tokens)
     return dataset
 
-def weather_int(filename, idx, skip=1, step=1):
+def weather_float(list, idx, name=True):
     dataset = []
-    with open(filename, encoding="utf-8-sig") as f:
-        lines = f.readlines()
-
-        for line in lines[skip::step]:
-            tokens = line.strip().split(",")
-            if len(tokens)-1 >= idx:
-                if tokens[idx] != '':
-                    token = float(tokens[idx])
-                else:
-                    token = None
-            dataset.append(token)
+    if name == True:
+        for i in range(len(list)):
+            if i != 0:
+                dataset.append(float(list[i][idx]))
+    else:
+        for i in range(len(list)):
+            dataset.append(float(list[i][idx]))
     return dataset
 
-def weather_str(filename, idx, skip=1, step=1):
+def weather_int(list, idx, name=True):
     dataset = []
-    with open(filename, encoding="utf-8-sig") as f:
-        lines = f.readlines()
-
-        for line in lines[skip::step]:
-            tokens = line.strip().split(",")
-            if len(tokens)-1 >= idx:
-                if tokens[idx] != '':
-                    token = tokens[idx]
-                else:
-                    token = None
-            dataset.append(token)
+    if name == True:
+        for i in range(len(list)):
+            if i != 0:
+                dataset.append(int(list[i][idx]))
+    else:
+        for i in range(len(list)):
+            dataset.append(int(list[i][idx]))
     return dataset
 
-def dates(filename, skip=1, step=1):
+def weather_str(list, idx, name=True):
     dataset = []
-    with open(filename, encoding="utf-8-sig") as f:
-        lines = f.readlines()
+    if name == True:
+        for i in range(len(list)):
+            if i != 0:
+                dataset.append(str(list[i][idx]))
+    else:
+        for i in range(len(list)):
+            dataset.append(str(list[i][idx]))
+    return dataset
 
-        for line in lines[skip::step]:
-            tokens = line.split(",")
-            years = int(tokens[0])
-            months = int(tokens[1])
-            days = int(tokens[2])
+def dates(list, year_idx=0 , month_idx=1, day_idx=2, name=True):
+    dataset = []
+    if name == True:
+        for i in range(len(list)):
+            if i != 0:
+                years = int(list[i][year_idx])
+                months = int(list[i][month_idx])
+                days = int(list[i][day_idx])
+                dataset.append([years, months, days])
+    else:
+        for i in range(len(list)):
+            years = int(list[i][year_idx])
+            months = int(list[i][month_idx])
+            days = int(list[i][day_idx])
             dataset.append([years, months, days])
     return dataset
 
@@ -64,4 +68,4 @@ def callfile(filestation,URL):
     with open(filestation,"w",encoding="UTF-8-sig") as f:
         res = requests.get(URL)
         res.encoding = "UTF-8"
-        f.write(res.text)
+        f.write(res.text.replace("\r", ""))
