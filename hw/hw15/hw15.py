@@ -16,8 +16,9 @@ def make_int_list():
 
 def main():
     list = make_int_list()
-
-    print(f'입력된 값은 {list}입니다. 총 {len(list)}개의 자연수가 입력되었고, 평균은 {sum(list)/len(list)}입니다.')
-
+    try:
+        print(f'입력된 값은 {list}입니다. 총 {len(list)}개의 자연수가 입력되었고, 평균은 {sum(list)/len(list)}입니다.')
+    except ZeroDivisionErrror:
+        print("유효한 값 없음")
 if __name__ == "__main__":
     main()
