@@ -2,4 +2,9 @@
 #
 
 def update_shown_answer(shown_answer, hidden_answer, x):
-    
+    pass
+
+def main():
+    pass
+if __name__ =="__main__":
+    main()

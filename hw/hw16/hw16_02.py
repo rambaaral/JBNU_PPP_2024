@@ -43,7 +43,14 @@ def caesar_decode(text:str, shift: int = 3) -> str:
     return res
 
 def main():
-    encode = caesar_encode("AbC")
-    print(encode, caesar_decode(encode))
+    fst = input("인코딩: 1\n디코딩: 2\n")
+    if int(fst) == 1:
+        snd = int(input("이동할 칸 수 입력"))
+        trd = input("변환 할 문자 입력")
+        print(f"변환전: {trd}\n변환후: {caesar_encode(trd, snd)}")
+    elif int(fst) == 2:
+        snd = int(input("이동할 칸 수 입력"))
+        trd = input("변환 할 문자 입력")
+        print(f"변환전: {trd}\n변환후: {caesar_decode(trd, snd)}")
 if __name__ == "__main__":
     main()
