@@ -11,11 +11,11 @@ def main():
                 print(f"{tim}초\r\n")
                 time.sleep(1)
                 tim -= 1
+            print("Boom!")
         else:
             print("유효하지 않음")
     except ValueError:
         print("유효하지 않음")
 
-    print("Boom!")
 if __name__ =="__main__":
     main()

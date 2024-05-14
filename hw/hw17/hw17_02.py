@@ -4,13 +4,15 @@ import random
 def make_exam(num):
     exam = []
     answ = []
-
-    for i in range(num):
+    i = 0
+    while i < num:
         aaa = random.randint(1, 9)
         bbb = random.randint(1, 9)
 
         exam.append(f"{aaa}X{bbb}=?\n")
         answ.append(aaa*bbb)
+
+        i += 1
     
     return exam, answ
 
@@ -32,7 +34,7 @@ def main():
 
      result = do_exam(exam, answer)
 
-     print(f"시험 결과는 {100*sum(result)/len(result)}점")
+     print(f"시험 결과는 {100*sum(result)/len(result):.1f}점")
 
 
 if __name__ =="__main__":
