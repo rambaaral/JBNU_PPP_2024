@@ -1,4 +1,6 @@
 #로또번호 추출기
+
+
 import random
 
 def main():
