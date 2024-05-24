@@ -7,7 +7,7 @@ window = tk.Tk()
 window.withdraw()
 
 def gui_input(text:str) -> str:
-    return simpledialog.askstring(title="test", prompt=text)
+    return simpledialog.askstring(title="로또번호 추출기", prompt=text)
 
 
 def main():
