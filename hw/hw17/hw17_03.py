@@ -36,7 +36,8 @@ def main():
             gui_input(f"남은 목숨 {life}개\n{res}\n정답")
             break
 
-    gui_input(f"남은 목숨 {life}개\n{res}\n실패\n{hidden_answer}")
+    if life < 1:
+        gui_input(f"남은 목숨 {life}개\n{res}\n실패\n{hidden_answer}")
 
 
     
