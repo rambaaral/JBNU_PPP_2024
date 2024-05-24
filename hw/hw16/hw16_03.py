@@ -3,6 +3,16 @@
 #ord() = 문자를 10진수 아스키코드로 
 #chr() = 10진수 아스키코드를 문자로
 
+import tkinter as tk
+from tkinter import simpledialog
+
+window = tk.Tk()
+window.withdraw()
+
+def gui_input(text:str) -> str:
+    return simpledialog.askstring(title="초성게임", prompt=text)
+
+
 cs_list = ['ㄱ', 'ㄲ', 'ㄴ', 'ㄷ', 'ㄸ', 'ㄹ', 'ㅁ', 'ㅂ', 'ㅃ', 'ㅅ', 'ㅆ', 'ㅇ', 'ㅈ', 'ㅉ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅍ', 'ㅎ']
 
 joongs_list = ['ㅏ', 'ㅐ', 'ㅑ', 'ㅒ', 'ㅓ', 'ㅔ', 'ㅕ', 'ㅖ', 'ㅗ', 'ㅘ', 'ㅙ', 'ㅚ', 'ㅛ', 'ㅜ', 'ㅝ', 'ㅞ', 'ㅟ', 'ㅠ', 'ㅡ', 'ㅢ', 'ㅣ']
@@ -21,9 +31,8 @@ def get_cs(aws):
 def main():
     hidden = "핵산말단분해효소"
     problem = get_cs(hidden)
-    print(f"문제의 초성은 '{problem}'입니다.")
 
-    answer = input("답은?\n")
+    answer = gui_input(f"문제의 초성은 '{problem}'입니다.\n답은?\n")
     if answer == hidden:
          print("정답")
     else:

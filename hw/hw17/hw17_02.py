@@ -1,6 +1,16 @@
 #구구단 문제를 제출하고 정답 개수를 체크해서 점수 출력
 import random
 
+import tkinter as tk
+from tkinter import simpledialog
+
+window = tk.Tk()
+window.withdraw()
+
+def gui_input(text:str) -> str:
+    return simpledialog.askstring(title="구구단", prompt=text)
+
+
 def make_exam(num):
     exam = []
     answ = []
@@ -20,7 +30,7 @@ def do_exam(exam, answer):
     dataset = []
 
     for i in range(len(exam)):
-        aaa = int(input(exam[i]))
+        aaa = int(gui_input(exam[i]))
         if aaa == answer[i]:
             dataset.append(1)
         else:
@@ -29,7 +39,7 @@ def do_exam(exam, answer):
     return dataset
 
 def main():
-     exams = int(input("문제 갯수 입력"))
+     exams = int(gui_input("문제 갯수 입력"))
      exam, answer = make_exam(exams)
 
      result = do_exam(exam, answer)

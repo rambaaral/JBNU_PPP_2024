@@ -1,6 +1,14 @@
 #아스키코드를 이용하여 대문자는 소문자로, 소문자는 대문자로 바꾸기
 #ord() = 문자를 10진수 아스키코드로 
 #chr() = 10진수 아스키코드를 문자로
+import tkinter as tk
+from tkinter import simpledialog
+
+window = tk.Tk()
+window.withdraw()
+
+def gui_input(text:str) -> str:
+    return simpledialog.askstring(title="대문자는 소문자로, 소문자는 대문자로", prompt=text)
 
 def toggle_text(text:str) -> str:
     aaa = list(text)
@@ -18,7 +26,7 @@ def toggle_text(text:str) -> str:
     return res
 
 def main():
-    txt = input("문자열입력")
+    txt = gui_input("문자열입력")
     res = toggle_text(txt)
     print(res)
 if __name__ == "__main__":

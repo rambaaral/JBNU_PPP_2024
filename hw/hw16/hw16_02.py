@@ -1,5 +1,15 @@
 #아스키 코드를 이용하여 카이사르 암호를 구현
 #알파벳을 일정한 거리만큼 밀어서 다른 알파벳으로 대치
+
+import tkinter as tk
+from tkinter import simpledialog
+
+window = tk.Tk()
+window.withdraw()
+
+def gui_input(text:str) -> str:
+    return simpledialog.askstring(title="카이사르 암호", prompt=text)
+
 def caesar_encode(text:str, shift: int = 3) -> str:
     aaa = list(text)
     for i in range(len(aaa)):
@@ -43,14 +53,14 @@ def caesar_decode(text:str, shift: int = 3) -> str:
     return res
 
 def main():
-    fst = input("인코딩: 1\n디코딩: 2\n")
+    fst = gui_input("인코딩: 1\n디코딩: 2\n")
     if int(fst) == 1:
-        snd = int(input("이동할 칸 수 입력"))
-        trd = input("변환 할 문자 입력")
+        snd = int(gui_input("이동할 칸 수 입력"))
+        trd = gui_input("변환 할 문자 입력")
         print(f"변환전: {trd}\n변환후: {caesar_encode(trd, snd)}")
     elif int(fst) == 2:
-        snd = int(input("이동할 칸 수 입력"))
-        trd = input("변환 할 문자 입력")
+        snd = int(gui_input("이동할 칸 수 입력"))
+        trd = gui_input("변환 할 문자 입력")
         print(f"변환전: {trd}\n변환후: {caesar_decode(trd, snd)}")
 if __name__ == "__main__":
     main()
