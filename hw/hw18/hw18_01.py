@@ -91,6 +91,7 @@ def main():
 
     plt.rcParams['font.family'] = 'Malgun Gothic'
 
+    ###내 생일의 년도별 온도 분푸
     """
     Bday_tmax = weather_float(weatherlist, 4, Bday_idx)
     Bday_tmin = weather_float(weatherlist, 3, Bday_idx)
@@ -103,6 +104,8 @@ def main():
     plt.ylabel("섭씨온도")
     plt.xlabel("년도")
     """
+
+    ###년도별 겨울철 온도분포
     """
     winter_tmean = weather_float(weatherlist, 3, winter_idx)
     winter_date = weather_year(weatherlist, 0, winter_idx)
@@ -113,6 +116,8 @@ def main():
     plt.ylabel("섭씨온도")
     plt.xlabel("년도")
     """
+
+    ###년도별 여름철 온도분포
     """
     summer_tmean = weather_float(weatherlist, 3, summer_idx)
     summer_date = weather_year(weatherlist, 0, summer_idx)
