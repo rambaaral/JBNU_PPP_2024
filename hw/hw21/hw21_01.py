@@ -3,7 +3,7 @@ from telegram import Update
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
 
 
-id = 7492385762
+id = 개인정보보안
 
 def help(update: Update, context: CallbackContext) -> None:
     update.message.reply_text('안녕하세요! 우마정보봇입니다. 위키, 극장판, 애니, 게임 등의 단어를 인식합니다.')
@@ -26,7 +26,7 @@ def echo(update: Update, context: CallbackContext) -> None:
     update.message.reply_text(update.message.text)
 
 def main():
-    token = "7165925531:AAEgHTKBt5Pi31Iu3Bm8eiMXz-yJTBULFAg"
+    token = "통신보안"
     
     updater = Updater(token, use_context=True)
     dispatcher = updater.dispatcher
