@@ -1,28 +1,50 @@
+import cv2
+import numpy as np
 import pymunk
 import pymunk.pygame_util
 import pygame
 import math
 import json
 
-# 위치 파일 불러오기
-positions_file = 'positions.json'
+# 이미지에서 초록색 점의 위치 추출 함수
+def extract_green_dots(image_path):
+    image = cv2.imread(image_path)
+    if image is None:
+        raise FileNotFoundError("이미지를 로드할 수 없습니다.")
+    
+    hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+    
+    # 초록색 범위 설정 (HSV)
+    lower_green = np.array([40, 40, 40])
+    upper_green = np.array([80, 255, 255])
+    
+    mask = cv2.inRange(hsv, lower_green, upper_green)
+    res = cv2.bitwise_and(image, image, mask=mask)
+    
+    # 컨투어 찾기
+    contours, _ = cv2.findContours(mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    
+    positions = []
+    for cnt in contours:
+        x, y, w, h = cv2.boundingRect(cnt)
+        cx = x + w // 2
+        cy = y + h // 2
+        positions.append((cx, cy))
+    
+    return positions, image.shape[1], image.shape[0]
 
-def load_positions(file_path):
-    with open(file_path, 'r') as f:
-        positions = json.load(f)
-    return positions
+# 이미지에서 초록색 점 위치 추출 및 저장
+image_path = 'abcde.jpg'  # 코드 파일과 같은 폴더에 있는 이미지 파일 경로
+circle_positions, img_width, img_height = extract_green_dots(image_path)
 
-# 위치 불러오기
-circle_positions = load_positions(positions_file)
-
-# 원래 이미지 크기 설정 (예: 800x600)
-original_width = 611
-original_height = 600
+# 위치 저장
+with open('positions.json', 'w') as f:
+    json.dump(circle_positions, f)
 
 # 화면 확대 비율 설정
 scale_factor = 2
-scaled_width = int(original_width * scale_factor)
-scaled_height = int(original_height * scale_factor)
+scaled_width = int(img_width * scale_factor)
+scaled_height = int(img_height * scale_factor)
 
 # Pygame 초기화
 pygame.init()
@@ -39,7 +61,7 @@ def create_ball(space, position):
     body = pymunk.Body(1, math.inf)  # 무한 관성 모멘트를 가진 동적 바디
     body.position = position
     shape = pymunk.Circle(body, 15)  # 반지름 15
-    shape.elasticity = 0.5
+    shape.elasticity = 0.9
     space.add(body, shape)
     return shape
 
@@ -64,7 +86,7 @@ def create_boundaries(space, width, height):
         space.add(boundary)
 
 # 원형 장애물 생성
-circle_radius = 3  # 원형 장애물 반지름 설정
+circle_radius = 10  # 원형 장애물 반지름 설정
 scaled_circle_positions = [(int(pos[0] * scale_factor), int(pos[1] * scale_factor)) for pos in circle_positions]
 circles = [create_circle(space, pos, circle_radius) for pos in scaled_circle_positions]
 
