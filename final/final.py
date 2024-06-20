@@ -2,7 +2,6 @@ import pymunk
 import pymunk.pygame_util
 import pygame
 import math
-import json
 import random
 import tkinter as tk
 from tkinter import simpledialog
